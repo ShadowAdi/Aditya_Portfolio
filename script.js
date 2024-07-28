@@ -17,18 +17,40 @@ function textController() {
     text.innerHTML = clutter2;
   });
 
-  gsap.to(".page2 h1 span", {
-    color: "white",
-    stagger: 1,
-    scrollTrigger: {
-      trigger: ".page2 h1",
-      start: "-50% 80%",
-      end: "bottom top",
-      scrub: 2,
-      scroller: "main",
+  ScrollTrigger.matchMedia({
+    // Desktop
+    "(min-width: 769px)": function () {
+      gsap.to(".page2 h1 span", {
+        color: "white",
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: ".page2 h1",
+          start: "-50% 80%",
+          end: "bottom top",
+          scrub: 2,
+          scroller: "body", // Adjust if you have a different scroller for desktop
+        },
+      });
     },
+
+    // Mobile
+    "(max-width: 768px)": function () {
+      gsap.to(".page2 h1 span", {
+        color: "white",
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: ".page2 h1",
+          start: "-50% 80%",
+          end: "bottom top",
+          scrub: 2,
+          scroller: "body", // Adjust if you have a different scroller for mobile
+        },
+      });
+    }
   });
 }
+
+textController();
 
 function loco_gsap() {
   gsap.registerPlugin(ScrollTrigger);
@@ -232,6 +254,12 @@ function navAnimator() {
     });
   });
 }
+
+
+window.addEventListener("resize", () => {
+  ScrollTrigger.refresh();
+});
+
 
 document.addEventListener("DOMContentLoaded", () => {
   var contactInfo = document.querySelector(".contact-section");
