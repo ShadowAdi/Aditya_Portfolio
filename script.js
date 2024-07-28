@@ -11,42 +11,22 @@ function textController() {
     var h1msg = text.textContent;
     var h1Variable = h1msg.split("");
     h1Variable.forEach(function (e) {
-      clutter2 += `<span>${e}</span>`;
+      clutter2 += <span>${e}</span>;
     });
 
     text.innerHTML = clutter2;
   });
 
-  ScrollTrigger.matchMedia({
-    // Desktop
-    "(min-width: 769px)": function () {
-      gsap.to(".page2 h1 span", {
-        color: "white",
-        stagger: 0.1,
-        scrollTrigger: {
-          trigger: ".page2 h1",
-          start: "-50% 80%",
-          end: "bottom top",
-          scrub: 2,
-          scroller: "body", // Adjust if you have a different scroller for desktop
-        },
-      });
+  gsap.to(".page2 h1 span", {
+    color: "white",
+    stagger: 1,
+    scrollTrigger: {
+      trigger: ".page2 h1",
+      start: "-50% 80%",
+      end: "bottom top",
+      scrub: 2,
+      scroller: "main",
     },
-
-    // Mobile
-    "(max-width: 768px)": function () {
-      gsap.to(".page2 h1 span", {
-        color: "white",
-        stagger: 0.1,
-        scrollTrigger: {
-          trigger: ".page2 h1",
-          start: "-50% 80%",
-          end: "bottom top",
-          scrub: 2,
-          scroller: "body", // Adjust if you have a different scroller for mobile
-        },
-      });
-    }
   });
 }
 
