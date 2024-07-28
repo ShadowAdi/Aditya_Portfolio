@@ -50,7 +50,7 @@ function textController() {
   });
 }
 
-textController();
+// textController();
 
 function loco_gsap() {
   gsap.registerPlugin(ScrollTrigger);
