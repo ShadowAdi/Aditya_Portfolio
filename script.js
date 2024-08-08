@@ -1,36 +1,11 @@
+gsap.registerPlugin(ScrollTrigger)
 const circleElement = document.querySelector(".circle");
 const locoScroll = new LocomotiveScroll({
   el: document.querySelector("main"),
   smooth: true,
 });
 
-function textController() {
-  var h1Text = document.querySelectorAll(".page2 h1");
-  h1Text.forEach((text) => {
-    var clutter2 = "";
-    var h1msg = text.textContent;
-    var h1Variable = h1msg.split("");
-    h1Variable.forEach(function (e) {
-      clutter2 += <span>${e}</span>;
-    });
 
-    text.innerHTML = clutter2;
-  });
-
-  gsap.to(".page2 h1 span", {
-    color: "white",
-    stagger: 1,
-    scrollTrigger: {
-      trigger: ".page2 h1",
-      start: "-50% 80%",
-      end: "bottom top",
-      scrub: 2,
-      scroller: "main",
-    },
-  });
-}
-
-// textController();
 
 function loco_gsap() {
   gsap.registerPlugin(ScrollTrigger);
@@ -236,10 +211,6 @@ function navAnimator() {
 }
 
 
-window.addEventListener("resize", () => {
-  ScrollTrigger.refresh();
-});
-
 
 document.addEventListener("DOMContentLoaded", () => {
   var contactInfo = document.querySelector(".contact-section");
@@ -248,11 +219,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const vidSectionContent = document.querySelector(".vidSection p");
   const allInfoSection = document.querySelector(".allInfo ul");
   const circleAnimator = animateCircle();
+
   loco_gsap();
-  gsapScroller();
-  NavbarAnime();
-  navAnimator();
-  textController();
+  animateCircle()
+  gsapScroller()
+  NavbarAnime()
+  navAnimator()
+
 
   var contactInfo = document.querySelector(".contact-section");
   contactInfo.addEventListener("mouseenter", () => {
@@ -271,16 +244,6 @@ document.addEventListener("DOMContentLoaded", () => {
     languages: {
       title: "Proficiency in Multiple Languages",
       content: "Hands on Experience with Python, JavaScript, Go, and C++",
-      images: [
-        "images/CSS3_logo.svg.png",
-        "images/JavaScript-logo.png",
-        "images/ISO_C++_Logo.svg.png",
-        "images/Typescript_logo_2020.svg.png",
-        "images/Python-logo-notext.svg.png",
-        "images/CSS3_logo.svg.png",
-        "images/png-transparent-logo-html-html5.png",
-        "images/Go-Logo_Blue.png",
-      ],
       points: [
         "I Have Worked with Multiple Programming Languages. Ranging from <span class='technology'>Python</span> to <span class='technology'>Golang</span>.",
         "I Used <span class='technology'>Python</span> in Data Science and Machine Learning Tasks",
@@ -291,14 +254,6 @@ document.addEventListener("DOMContentLoaded", () => {
     "data-analysis": {
       title: "Data Analysis, Visualization, and Cleaning",
       content: "Expert in Pandas, Matplotlib, Seaborn, and more.",
-      images: [
-        "images/numpy.png",
-        "images/pandas.png",
-        "images/matplotlib.png",
-        "images/sklearn.png",
-        "images/seaborn.png",
-        "images/plotly.png",
-      ],
       points: [
         "Conduct Exploratory Data Analysis (EDA) to understand and improve data quality. Utilize libraries such as <span class='technology'>NumPy</span> and <span class='technology'>Pandas</span> for efficient data manipulation and analysis.",
         "Clean and preprocess data to ensure accuracy and consistency. Use Excel along with Python libraries like <span class='technology'>NumPy</span> and <span class='technology'>Pandas</span> to handle missing values, remove duplicates, and standardize data formats.",
@@ -312,13 +267,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "Building and Evaluating and Deploy Machine and Deep Learning Models",
       content:
         "Specialized in regression, classification, neural networks, and NLP.",
-      images: [
-        "images/Tensorflow_logo.svg.png",
-        "images/sklearn.png",
-        "images/opencv.png",
-        "images/nltk.png",
-        "images/images.jpeg",
-      ],
+    
       points: [
         "Build and evaluate machine learning models for various tasks. Utilize <span class='technology'>scikit-learn</span> for developing models. Perform regression, classification, and clustering.",
         "Design and implement deep learning models for complex tasks. Use <span class='technology'>TensorFlow</span> for creating both simple and advanced models. Created and deployed various projects in NLP and computer vision, like Sentiment Analysis, Image Classification and Segmentation and Object Detection etc.",
@@ -328,12 +277,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "generative-ai": {
       title: "Hands-on Experience in Generative AI and LLMs",
       content: "Able to work with different Generative AI and LLMs.",
-      images: [
-        "images/llama.jpeg",
-        "images/Hugging Face.png",
-        "images/images (5).png",
-        "images/langchain3.webp",
-      ],
+
       points: [
         "Integrate <span class='technology'>LLMs</span> such as <span class='technology'>OpenAI</span> and <span class='technology'>Gemini</span> into web applications to enhance functionality and user experience. Utilize advanced AI capabilities to provide cutting-edge solutions and features.",
         " Leverage generative AI technologies for tasks beyond traditional LLM applications, creating innovative solutions in areas such as text and image generation. Understand the distinctions between <span class='technology'>LLMs</span> and generative AI to apply the right approach for each use case.",
@@ -344,7 +288,6 @@ document.addEventListener("DOMContentLoaded", () => {
     "web-design": {
       title: "Web and App Design",
       content: "Creating engaging UI/UX designs using Figma.",
-      images: ["images/figma.png", "images/sketch.png", "images/adobe_xd.png"],
       points: [
         "Develop website designs that reflect creativity and showcase an artistic vision, ensuring a unique and engaging user experience.",
         "Create detailed prototypes and wireframes using tools like <span class='technology'>Figma</span> to visualize and plan website and app layouts effectively before development.",
@@ -354,7 +297,6 @@ document.addEventListener("DOMContentLoaded", () => {
     "full-stack": {
       title: "Full-Stack Application Development",
       content: "Developing robust applications with latest technologies.",
-      images: ["images/react.png", "images/nodejs.png", "images/mongodb.png"],
       points: [
         "Utilize the <span class='technology'>MERN</span> stack (<span class='technology'>MongoDB</span>, <span class='technology'>Express.js</span>, <span class='technology'>React</span>, <span class='technology'>Node.js</span>) and <span class='technology'>Next.js</span> for building dynamic and scalable web applications with robust front-end and back-end solutions.",
         "Use <span class='technology'>PostgreSQL</span> for relational database needs, offering powerful querying capabilities and reliability.  Implement <span class='technology'>MongoDB</span> for flexible, schema-less data storage, ideal for handling large volumes of unstructured data.",

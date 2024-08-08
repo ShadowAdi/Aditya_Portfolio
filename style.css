@@ -265,11 +265,12 @@ body:hover .circle {
 }
 
 .page2 h1{
-  color: #434b34;
+  color: white;
   text-align: center;
   font-size: 1.4rem;
   font-weight: 400;
-  width: 80%;
+  width: 60%;
+  opacity: 1;
 }
 
 
